@@ -2,21 +2,24 @@ package com.amine.tollparking.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PARKING")
 public class Parking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	@OneToMany(mappedBy="parking")
+
+	@OneToMany(mappedBy = "parking", cascade = CascadeType.ALL)
 	private Set<Spot> spot;
-	
+
 	private String billingPolicy;
 
 	public long getId() {

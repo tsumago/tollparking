@@ -39,15 +39,19 @@ public class InitData {
     	
     	Spot spot1 = new Spot();
     	spot1.setSpotType(CarType.ELECTRIC20KW);
+    	spot1.setParking(parking);
     	
     	Spot spot2 = new Spot();
     	spot2.setSpotType(CarType.ELECTRIC50KW);
+    	spot2.setParking(parking);
     	
     	Spot spot3 = new Spot();
     	spot3.setSpotType(CarType.STANDARD);
+    	spot3.setParking(parking);
     	
     	Spot spot4 = new Spot();
     	spot4.setSpotType(CarType.STANDARD);
+    	spot4.setParking(parking);
     	
     	Set<Spot> spots = new HashSet<>();
     	
@@ -64,7 +68,7 @@ public class InitData {
     	
     	// Car sample
     	Car car = new Car();
-    	car.setOwner(client);
+    	car.setClient(client);
     	car.setPlateNumber("H3545V");
     	car.setType(CarType.ELECTRIC50KW);
     	

@@ -21,7 +21,8 @@ public class Car {
 	private String plateNumber;
 	
 	@ManyToOne
-	private Client owner;
+	@NotNull(message = "A car must be linked to a client.")
+	private Client client;
 	
 	@Enumerated(EnumType.STRING)
 	private CarType type;
@@ -39,11 +40,11 @@ public class Car {
 		this.plateNumber = plateNumber;
 	}
 	
-	public Client getOwner() {
-		return owner;
+	public Client getClient() {
+		return client;
 	}
-	public void setOwner(Client owner) {
-		this.owner = owner;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	public CarType getType() {
 		return type;

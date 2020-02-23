@@ -1,11 +1,15 @@
 package com.amine.tollparking.entity;
 
+import java.util.Set;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,6 +30,9 @@ public class Client {
 	@NotNull(message = "Balance is required.")
     @Basic(optional = false)
 	private int balance;
+	
+	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+	private Set<Car> car;
 	
 	public Client(String firstName, String lastName, String username, int balance) {
 		this.firstName = firstName;
@@ -64,7 +71,16 @@ public class Client {
 	public int getBalance() {
 		return balance;
 	}
+	
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+
+	public Set<Car> getCars() {
+		return car;
+	}
+
+	public void setCars(Set<Car> car) {
+		this.car = car;
 	}
 }

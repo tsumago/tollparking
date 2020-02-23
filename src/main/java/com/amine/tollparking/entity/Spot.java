@@ -5,14 +5,16 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="SPOT")
 public class Spot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,9 +23,10 @@ public class Spot {
 	@OneToOne
 	private Car car;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@NotNull(message = "A spot must be linked to a parking.")
 	private Parking parking;
-	
+
 	private Date entranceTime;
 	
 	@Enumerated(EnumType.STRING)
@@ -43,6 +46,22 @@ public class Spot {
 
 	public void setCar(Car car) {
 		this.car = car;
+	}
+	
+	public Parking getParking() {
+		return parking;
+	}
+
+	public void setParking(Parking parking) {
+		this.parking = parking;
+	}
+
+	public Date getEntranceTime() {
+		return entranceTime;
+	}
+
+	public void setEntranceTime(Date entranceTime) {
+		this.entranceTime = entranceTime;
 	}
 
 	public Date getEntertime() {
