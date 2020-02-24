@@ -35,7 +35,7 @@ public class InitData {
     	// Parking
     	Parking parking = new Parking();
     	
-    	parking.setBillingPolicy("h * priceHour");
+    	parking.setBillingPolicy("minimalfare + timeparked * priceperhour");
     	
     	Spot spot1 = new Spot();
     	spot1.setSpotType(CarType.ELECTRIC20KW);

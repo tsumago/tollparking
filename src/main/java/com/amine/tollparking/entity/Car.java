@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Car {
 	@Id
@@ -22,10 +24,13 @@ public class Car {
 	
 	@ManyToOne
 	@NotNull(message = "A car must be linked to a client.")
+	@JsonBackReference
 	private Client client;
 	
 	@Enumerated(EnumType.STRING)
 	private CarType type;
+	
+	public Car() {}
 	
 	public Long getId() {
 		return id;

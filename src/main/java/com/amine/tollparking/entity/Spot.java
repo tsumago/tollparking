@@ -1,7 +1,6 @@
 package com.amine.tollparking.entity;
 
-import java.util.Date;
-
+import java.time.ZonedDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="SPOT")
@@ -25,12 +26,15 @@ public class Spot {
 	
 	@ManyToOne
 	@NotNull(message = "A spot must be linked to a parking.")
+	@JsonBackReference
 	private Parking parking;
 
-	private Date entranceTime;
+	private ZonedDateTime entranceTime;
 	
 	@Enumerated(EnumType.STRING)
 	private CarType spotType;
+	
+	public Spot() {}
 
 	public long getId() {
 		return id;
@@ -56,19 +60,11 @@ public class Spot {
 		this.parking = parking;
 	}
 
-	public Date getEntranceTime() {
+	public ZonedDateTime getEntranceTime() {
 		return entranceTime;
 	}
 
-	public void setEntranceTime(Date entranceTime) {
-		this.entranceTime = entranceTime;
-	}
-
-	public Date getEntertime() {
-		return entranceTime;
-	}
-
-	public void setEntertime(Date entranceTime) {
+	public void setEntranceTime(ZonedDateTime entranceTime) {
 		this.entranceTime = entranceTime;
 	}
 

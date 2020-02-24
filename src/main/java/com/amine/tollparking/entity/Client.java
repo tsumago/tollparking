@@ -29,10 +29,12 @@ public class Client {
 	
 	@NotNull(message = "Balance is required.")
     @Basic(optional = false)
-	private int balance;
+	private double balance;
 	
-	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="client", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Car> car;
+	
+	public Client() {}
 	
 	public Client(String firstName, String lastName, String username, int balance) {
 		this.firstName = firstName;
@@ -68,11 +70,11 @@ public class Client {
 		this.username = username;
 	}
 
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 	
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
