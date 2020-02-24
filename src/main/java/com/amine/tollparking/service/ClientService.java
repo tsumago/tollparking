@@ -14,14 +14,13 @@ public class ClientService {
 	@Autowired
 	private ClientRepository clientRepo;
 
-	public Client editClient(Client oldClient, Client newClient) {
+	public Client editClient(Client oldClient, Client newClient) {		
 		try {
 			oldClient.setBalance(newClient.getBalance());
-			oldClient.setCars(newClient.getCars());
 			oldClient.setFirstName(newClient.getFirstName());
-			oldClient.setLastName(newClient.getLastName());			
+			oldClient.setLastName(newClient.getLastName());
 		} catch (Exception e) {
-			throw new ApiException("Error while editing existing client", HttpStatus.BAD_REQUEST, e);
+			throw new ApiException("Error while editing existing client", HttpStatus.UNPROCESSABLE_ENTITY, e);
 		}
 
 		return clientRepo.save(oldClient);
@@ -33,7 +32,7 @@ public class ClientService {
 				car.setClient(newClient);
 			}
 		} catch (Exception e) {
-			throw new ApiException("Error while creating new client", HttpStatus.BAD_REQUEST, e);
+			throw new ApiException("Error while creating new client", HttpStatus.FAILED_DEPENDENCY, e);
 		}
 
 		return clientRepo.save(newClient);

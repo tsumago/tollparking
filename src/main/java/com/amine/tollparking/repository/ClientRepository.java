@@ -9,5 +9,5 @@ import com.amine.tollparking.entity.Client;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 	public Client findByUsername(String username);
 	
-	public long deleteByUsername(String username);
+	public int deleteByUsername(String username);
 }

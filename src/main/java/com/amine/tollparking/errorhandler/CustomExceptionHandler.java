@@ -19,20 +19,24 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex) {
         List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
-        logger.error(ex.getMessage());
-        logger.error(ex.getCause().getMessage());
+        logger.error(ex.toString());
+        if (ex.getCause() != null) {
+        	details.add(ex.getCause().getLocalizedMessage());
+        	logger.error(ex.getCause().toString());        	
+        }
         ErrorResponse error = new ErrorResponse("Server Error", details);
         return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
  
     @ExceptionHandler(ApiException.class)
-    public final ResponseEntity<Object> handleUserNotFoundException(ApiException ex) {
+    public final ResponseEntity<Object> handleApiException(ApiException ex) {
         List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
-        logger.error(ex.getMessage());
-        logger.error(ex.getCause().getMessage());
-        ErrorResponse error = new ErrorResponse(ex.getMessage(), details);
+        logger.error(ex.toString());
+        if (ex.getCause() != null) {
+        	details.add(ex.getCause().getLocalizedMessage());
+        	logger.error(ex.getCause().toString());        	
+        }
+        ErrorResponse error = new ErrorResponse(ex.getLocalizedMessage(), details);
         return new ResponseEntity(error, ex.getHttpStatus());
     }
 }

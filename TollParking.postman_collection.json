@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "308ee844-361f-46ba-98fc-33bac777e011",
+		"name": "TollParking",
+		"description": "Toll Parking coding exercice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET CLIENT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/parking/client/tsumago",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"client",
+						"tsumago"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CLIENT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Jonathan\",\r\n    \"lastName\": \"DEMERS\",\r\n    \"username\": \"demers\",\r\n    \"balance\": 200,\r\n    \"cars\": [\r\n        {\r\n            \"plateNumber\": \"H3FER\",\r\n            \"type\": \"STANDARD\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/parking/client/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"client",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENTER PARKING",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/parking/toll/enter/H3545V-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"toll",
+						"enter",
+						"H3545V-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LEAVE PARKING",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/parking/toll/leave/H3545V",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"toll",
+						"leave",
+						"H3545V"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT CLIENT",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Jean\",\r\n    \"lastName\": \"REMO\",\r\n    \"username\": \"demers\",\r\n    \"balance\": 3000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/parking/client/demers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"client",
+						"demers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE CLIENT",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/parking/client/demers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parking",
+						"client",
+						"demers"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
