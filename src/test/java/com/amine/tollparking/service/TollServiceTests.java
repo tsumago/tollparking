@@ -123,4 +123,6 @@ public class TollServiceTests {
 		
 		assertEquals(thrown.getMessage(), "The car entrance time was not recorded");
 	}
+	
+	//TODO Test formula parsing with exp4j
 }
