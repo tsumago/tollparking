@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.amine.tollparking.entity.Car;
 import com.amine.tollparking.entity.Client;
 import com.amine.tollparking.errorhandler.ApiException;
 import com.amine.tollparking.repository.ClientRepository;
@@ -27,14 +26,6 @@ public class ClientService {
 	}
 
 	public Client createClient(Client newClient) {
-		try {
-			for (Car car : newClient.getCars()) {
-				car.setClient(newClient);
-			}
-		} catch (Exception e) {
-			throw new ApiException("Error while creating new client", HttpStatus.FAILED_DEPENDENCY, e);
-		}
-
 		return clientRepo.save(newClient);
 	}
 }

@@ -51,6 +51,8 @@ public class TollService {
 		
 		availableSpot.setCar(car);
 		availableSpot.setEntranceTime(ZonedDateTime.now());
+		
+		spotRepo.save(availableSpot);
 	}
 	
 	public ParkingLeaveResponse leaveParking(String plateNumber) {

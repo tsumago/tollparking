@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -15,16 +14,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 public class Car {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private Long id;
 	
-	@NotNull(message = "Car plate is required.")
+	@NotNull(message = "A car plate is required.")
     @Basic(optional = false)
 	private String plateNumber;
 	
 	@ManyToOne
-	@NotNull(message = "A car must be linked to a client.")
 	@JsonBackReference
+	@NotNull(message = "A car must be linked to a client.")
 	private Client client;
 	
 	@Enumerated(EnumType.STRING)

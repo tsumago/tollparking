@@ -47,7 +47,13 @@ public class ClientController {
 	@ResponseStatus(HttpStatus.FOUND)
 	public Client getClient(@PathVariable String username) {
 		logger.info("Fetching user {}", username);
-		return clientRepo.findByUsername(username);
+		Client response = clientRepo.findByUsername(username);
+		
+		if (response == null) {
+			throw new ApiException("Client with username " + username + " not found", HttpStatus.NOT_FOUND);
+		}
+		
+		return response;
 	}
 	
 	@PatchMapping("/{username}")
