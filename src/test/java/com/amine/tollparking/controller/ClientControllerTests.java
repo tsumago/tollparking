@@ -24,7 +24,7 @@ public class ClientControllerTests {
 	@Test
 	public void clientEdition_WhenClientNotFound() {
 		try {
-			mockMvc.perform(get("/client/{username}", "TEST")
+			mockMvc.perform(get("/client/{username}", "test")
 					.contentType("application/json"))
 			        .andExpect(status().isNotFound())
 			        .andExpect(jsonPath("$.message").value("Client with username TEST not found"));

@@ -28,7 +28,7 @@ public class TollController {
 	
 	@GetMapping("/enter/{carPlate}-{parkingId}")
 	@ResponseStatus(HttpStatus.OK)
-	public void enterParking(@PathVariable @NotBlank	String carPlate, @PathVariable @NotBlank Long parkingId) {
+	public void enterParking(@PathVariable @NotBlank String carPlate, @PathVariable @NotBlank Long parkingId) {
 		logger.info("Car with plate number {} entering parking {}.", carPlate, parkingId);
 		tollService.enterParking(carPlate, parkingId);
 		logger.info("Car with plate number {} entered successfully to parking {}.", carPlate, parkingId);

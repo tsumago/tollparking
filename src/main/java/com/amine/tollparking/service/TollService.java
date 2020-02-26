@@ -40,7 +40,7 @@ public class TollService {
 		Car car = carRepo.findByPlateNumber(carPlate);
 		
 		if (car == null) {
-			throw new ApiException("Car not registered", HttpStatus.NOT_FOUND);
+			throw new ApiException("Car with plate number " + carPlate + " is not registered", HttpStatus.NOT_FOUND);
 		}
 		
 		Spot availableSpot = spotRepo.findFirstBySpotTypeAndParkingIdAndCarIdIsNull(car.getType(), parkingId);
