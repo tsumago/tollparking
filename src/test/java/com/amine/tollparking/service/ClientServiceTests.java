@@ -35,7 +35,6 @@ public class ClientServiceTests {
 	
 	@Test
 	public void clientEdition_WhenNewClientIsNull() {
-		//when(clientRepo.save(any(Client.class))).thenReturn(null);
 		ApiException thrown = Assertions.assertThrows(ApiException.class, () -> {
 			clientService.editClient(client, null);
 		    });
