@@ -27,7 +27,7 @@ public class ClientControllerTests {
 			mockMvc.perform(get("/client/{username}", "test")
 					.contentType("application/json"))
 			        .andExpect(status().isNotFound())
-			        .andExpect(jsonPath("$.message").value("Client with username TEST not found"));
+			        .andExpect(jsonPath("$.message").value("Client with username test not found"));
 		} catch (Exception e) {
 			fail("Get inexistant client test failed with an Exception");
 		}
