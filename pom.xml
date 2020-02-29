@@ -15,10 +15,6 @@
 	<name>tollparking</name>
 	<description>Toll parking coding exercice</description>
 
-	<properties>
-		<java.version>13</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

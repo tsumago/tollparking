@@ -14,20 +14,12 @@ import org.springframework.test.context.TestPropertySource;
 @DataJpaTest
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 public class ClientRepositoryTests {
-	@Autowired
-	private DataSource dataSource;
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	@Autowired
-	private EntityManager entityManager;
+
 	@Autowired
 	private ClientRepository clientRepository;
 
 	@Test
 	void injectedComponentsAreNotNull() {
-		assertThat(dataSource).isNotNull();
-		assertThat(jdbcTemplate).isNotNull();
-		assertThat(entityManager).isNotNull();
 		assertThat(clientRepository).isNotNull();
 	}
 }
